@@ -1,8 +1,8 @@
-# OPENBIM_group12
+# OPENBIM_group24
 
 # Assignment 1 - OpenBIM Rule Checker
 
-- **Group number**: 06
+- **Group number**: 24
 - **Focus area**: Structure
 - **Claim being checked**: "The building is supported by 24 structural columns."
 - **Report reference**: Structural Report, p. 7, section 3.2
