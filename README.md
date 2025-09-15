@@ -1,5 +1,5 @@
 # OPENBIM_group12
 
-Group memebers 
+Group members 
 
 Diego Bruttin (s251895)
