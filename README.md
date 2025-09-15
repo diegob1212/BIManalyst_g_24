@@ -9,12 +9,11 @@ and has a flat roof upon which is a terrace"
 - **Report reference**: Structural Report, p. 1, section 1.1.1
 
 ## Description of script
-The script opens the IFC structural model (`25-06-D-STR.ifc`) and counts the number of `IfcBuildingStorey` elements. It checks 
-It prints the total number of columns and their IDs to validate the claim.
+The script opens the IFC structural model (`25-06-D-STR.ifc`) and counts the number of `IfcBuildingStorey` elements. It checks the numbers of storeys in Ifc model in order to verify the claim of the report. The script also checks the storey name and compare it to the elevation in order to check the validity of the storey name.
 
 ### Analyst notes
-- The script searches for all `IfcColumn` entities in the IFC model.  
-- It prints the number of columns and lists the first 10 as a sample.  
+- The script searches for all `IfcBuildingStorey` entities in the IFC model.  
+- It prints the number of storeys and lists the name and the elevation of all the storeys.  
 
 ### Manager notes
 - Script used: [`check_columns.py`](./check_columns.py)  
