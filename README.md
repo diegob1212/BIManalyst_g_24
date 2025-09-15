@@ -1,5 +1,8 @@
 # OPENBIM_group24
 
+**Group members**
+Diego Bruttin (s251895)
+
 # Assignment 1 - OpenBIM Rule Checker
 
 - **Group number**: 24
