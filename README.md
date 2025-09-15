@@ -22,4 +22,4 @@ The script opens the IFC structural model (`25-06-D-STR.ifc`) and counts the num
 
 ### Manager notes
 - Script used: [`check_storey.py`](./check_storey.py)  
-- This script validates the reported number of columns in the structural model.
+- This script validates the reported number of storeys in the structural model and the type of each storey.
