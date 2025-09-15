@@ -1,6 +1,7 @@
 # OPENBIM_group24
 
 **Group members**
+
 Diego Bruttin (s251895)
 
 # Assignment 1 - OpenBIM Rule Checker
@@ -19,5 +20,5 @@ The script opens the IFC structural model (`25-06-D-STR.ifc`) and counts the num
 - It prints the number of storeys and lists the name and the elevation of all the storeys.  
 
 ### Manager notes
-- Script used: [`check_columns.py`](./check_columns.py)  
+- Script used: [`check_storey.py`](./check_storey.py)  
 - This script validates the reported number of columns in the structural model.
