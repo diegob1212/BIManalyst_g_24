@@ -4,11 +4,12 @@
 
 - **Group number**: 24
 - **Focus area**: Structure
-- **Claim being checked**: "The building is supported by 24 structural columns."
-- **Report reference**: Structural Report, p. 7, section 3.2
+- **Claim being checked**: "DTU building 115 is a four-story structure that includes a basement
+and has a flat roof upon which is a terrace"
+- **Report reference**: Structural Report, p. 1, section 1.1.1
 
 ## Description of script
-The script opens the IFC structural model (`25-06-D-STR.ifc`) and counts the number of `IfcColumn` elements.  
+The script opens the IFC structural model (`25-06-D-STR.ifc`) and counts the number of `IfcBuildingStorey` elements. It checks 
 It prints the total number of columns and their IDs to validate the claim.
 
 ### Analyst notes
