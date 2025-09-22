@@ -1,4 +1,4 @@
-# OPENBIM_group24
+# BIManalyst group 24
 
 **Group members**
 
