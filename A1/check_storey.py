@@ -31,7 +31,8 @@ for s in storeys:
 
 #Check/Assert validity of the claim 
 if report_number_storey is len(storeys):
-    print('Claim is correct ! DTU Building 115 has 6 storeys including terrace and basement.')
+    print('Claim is correct ! DTU Building 115 has 6 storeys including terrace and basement.\n')
+    print('The elevation of each storey corresponds to their names !')
     
 else:
     print('Claim is incorrect ! In the report we have',report_number_storey,'storeys and the IFC model has', len(storeys))
