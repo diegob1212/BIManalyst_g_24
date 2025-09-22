@@ -2,7 +2,8 @@
 
 **Group members**
 
-Diego Bruttin (s251895)
+Diego Bruttin  (s251895)
+Jonas Alakuzay (s170494)
 
 # Assignment 1 - OpenBIM Rule Checker
 
