@@ -30,7 +30,7 @@ The criteria are explicit, checkable against model data (IFC geometry, materials
 
 It is a perfect candidate for a digital compliance check — validating the claim ensures that modelled structural elements are not only geometrically valid but also code-compliant under fire.
 
-Among all potential claims in the report this one was selected because:
+Among all potential claims in the report this one was selected because:  
 
 It directly addresses our group’s focus area (structural including fire safety).
 
