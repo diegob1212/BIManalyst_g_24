@@ -9,43 +9,62 @@
 
 * **Members:** Diego Bruttin s251895
 * **Roles:** **Analyst** 
-* **Coding confidence (0–4 per person):** 3 and 2 → **Group total:** 5
+* **Coding confidence (0–4 per person):** 3 and 1 → **Group total:** 4
+* Our group focus area is structural including fire safety. _ Is you focus area keeping the manager role_ what do we have to say there ??
 
 ---
 
 ## A2b — Identify Claim
 
 **Claim to check:**
-*All primary load‑bearing concrete **walls, columns, beams and slabs** comply with **R 120** per **EN 1992‑1‑2** using the **tabulated method** (dimensions, concrete class, axis distances/cover, exposure assumptions).*
+*All primary load‑bearing concrete **walls, columns, beams and slabs** comply with **R 120** per **EN 1992‑1‑2** using the **tabulated method** (dimensions, concrete class, axis distances/cover, exposure assumptions).* 
+Found in D_Report_Team08_STR page 27 section 10 Structural Fire Safety
+We select building 2508 to focus on.
 
-**Justification:**
+This claim asserts that all primary structural concrete members (columns, beams, slabs, and walls) in the renovated Building 308 achieve R 120 fire resistance. According to EN 1992-1-2 (Eurocode 2, Part 1-2), a structure achieves R 120 if it can maintain its load-bearing capacity for 120 minutes under fire exposure. The “tabulated method” is a prescriptive compliance approach that requires specific minimums in cross-section dimensions, concrete strength class, and reinforcement cover (axis distance). If these thresholds are met, the element is considered compliant without further advanced calculation.
 
-* Life‑safety critical; highly auditable.
-* Checkable from IFC geometry/materials (OpenBIM) + clearly documented Eurocode thresholds.
-* Bridges the group’s **structural** and **fire** focus areas.
+**Justification**
+Fire resistance is directly tied to occupant life safety, structural robustness, and compliance with building regulations.
 
-**Scope:** `IfcWall/IfcWallStandardCase`, `IfcColumn`, `IfcBeam`, `IfcSlab` (solid).
-**Out of current scope (flag as gaps):** explicit **rebar/axis distance** (if not modeled), **µ_fi** (load level under fire), **exposure sides**.
+The criteria are explicit, checkable against model data (IFC geometry, materials, property sets) and can be automated in Python using ifcOpenShell.
+
+It is a perfect candidate for a digital compliance check — validating the claim ensures that modelled structural elements are not only geometrically valid but also code-compliant under fire.
+
+Among all potential claims in the report this one was selected because:
+
+It directly addresses our group’s focus area (structural including fire safety).
+
+It is measurable and testable: IFC files provide element types, dimensions, and materials that can be compared to the Eurocode tabulated requirements.
 
 ---
 
 ## A2c — Use Case (how/when/what)
 
+**How to check**
+* We can check the claim by verifying that all primary load-bearing concrete walls, columns, beams and slabs achieve R 120 per EN 1992-1-2 (tabulated method) by comparing IFC model data to tabulated minima (dimensions, concrete class, axis distance/cover).
+
 **When to check:**
 
-* Design phase at key gates (30/60/90%); again before IFC issue; and once for as‑built verification.
-
-**BIM purpose:** **Gather → Analyse → Communicate → Realise**.
+* This claim would need to be checked at design phase at key gates (30/60/90%) and again before IFC issue. Finally, it is also needed for as‑built verification. So it will need to be chekced at the design and build phase.
 
 **Information relied on:**
 
 * From IFC: element class, dimensions/thickness (profile or material layers), concrete material/class (if present), any `FireRating` string.
 * From team inputs: **µ_fi** by typology, **exposure sides** policy, **default concrete cover** per element type when rebar is not modeled.
 
-**Closest BIM use case:** Automated **code/standard compliance** checking (OpenBIM).
+* 
+**BIM purpose:** 
+They are several BIM purposes required. First we will need to gather information in order ton analyse it. Once it has been compared to the standards, our goal will be to communicate the result in order to say if the fire safety requirements are met or not.
 
-**Process (BPMN overview):**
+**Closest BIM use case:** 
+dont understand this question as to speak with manager to know
 
+**BPMN overview**
+
+
+have to do it ourselves 
+
+**Example**
 * Swimlanes: **Architect**, **Structural Engineer**, **Fire Engineer**, **IFC R120 Checker (Python)**, **BIM Manager**.
 * Steps:
 
@@ -68,7 +87,6 @@
 **New tool task:** **Evaluate R120 compliance** (Python/ifcOpenShell).
 
 * Reads IFC + YAML assumptions, applies tabulated thresholds, merges defaults where IFC lacks data, outputs CSV and BCF.
-* In the **highlighted** BPMN, this task is clearly marked.
 
 ---
 
