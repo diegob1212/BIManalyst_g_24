@@ -105,6 +105,7 @@ It will then apply the tabulated thresholds (based on requirements for R120): mi
 In the end, we want our model to be able to classify each element: PASS (meets thresholds), FAIL (below threshold), UNKNOWN (data gap).
 
 **Why this is valuable (business & societal)**
+
 This tool could help different aspects of a project :
 
 * Safety & compliance: Surfaces life-safety risks (insufficient thickness/cover/concrete class) early, before construction.
@@ -126,7 +127,6 @@ This tool could help different aspects of a project :
 | Section dims (beams/columns) | `IfcProfileDef` (e.g., `IfcRectangleProfileDef`) or BRep bbox   | Often     | Use profile; fallback to bbox with sanity checks          |
 | Concrete class (≥ C25/30)    | `IfcMaterial`/`Pset_ConcreteElementGeneral`/Name                | Sometimes | Parse; else default in `assumptions.yaml`                 |
 | Axis distance / cover        | Rebar entities (`IfcReinforcingBar`) or Psets                   | Rare      | Use defaults in assumptions; mark **UNKNOWN** if critical |
-| Exposure sides; µ_fi         | Not standard in IFC                                             | No        | Provide in `assumptions.yaml` (by element type/zone)      |
 | FireRating (declared)        | `Pset_*Common.FireRating`                                       | Sometimes | Compare “claimed” vs computed result                      |
 
 **Learning needs:** robust ifcOpenShell queries, geometry thickness extraction, BCF generation, YAML config, reproducible reporting.
