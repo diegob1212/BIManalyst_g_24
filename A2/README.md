@@ -24,6 +24,7 @@ We select building 2508 to focus on.
 This claim asserts that all primary structural concrete members (columns, beams, slabs, and walls) in the renovated Building 308 achieve R 120 fire resistance. According to EN 1992-1-2 (Eurocode 2, Part 1-2), a structure achieves R 120 if it can maintain its load-bearing capacity for 120 minutes under fire exposure. The “tabulated method” is a prescriptive compliance approach that requires specific minimums in cross-section dimensions, concrete strength class, and reinforcement cover (axis distance). If these thresholds are met, the element is considered compliant without further advanced calculation.
 
 **Justification**
+
 Fire resistance is directly tied to occupant life safety, structural robustness, and compliance with building regulations.
 
 The criteria are explicit, checkable against model data (IFC geometry, materials, property sets) and can be automated in Python using ifcOpenShell.
@@ -51,10 +52,9 @@ It is measurable and testable: IFC files provide element types, dimensions, and 
 
 * From IFC: element class, dimensions/thickness (profile or material layers), concrete material/class (if present), any `FireRating` string.
 * From team inputs: **µ_fi** by typology, **exposure sides** policy, **default concrete cover** per element type when rebar is not modeled.
-
-* 
+ 
 **BIM purpose:** 
-They are several BIM purposes required. First we will need to gather information in order ton analyse it. Once it has been compared to the standards, our goal will be to communicate the result in order to say if the fire safety requirements are met or not.
+* They are several BIM purposes required. First we will need to gather information in order ton analyse it. Once it has been compared to the standards, our goal will be to communicate the result in order to say if the fire safety requirements are met or not.
 
 **Closest BIM use case:** 
 dont understand this question as to speak with manager to know
@@ -92,11 +92,28 @@ have to do it ourselves
 
 ## A2e — Tool Idea (OpenBIM ifcOpenShell)
 
-**Name:** `r120_checker`
-**Inputs:** `model.ifc`, `assumptions.yaml` (defaults), `rules/r120_thresholds.yaml` (tabulated minima), optional `zones.csv` (for exposure heuristic).
-**Logic:** map elements → read sizes/thickness → read/parse concrete class → apply R120 thresholds → triage **PASS/FAIL/UNKNOWN** → emit **report.csv** + **issues.bcfzip** + HTML summary.
-**Outputs:** auditable artefacts for coordination and authority evidence.
-**Value:** earlier risk discovery; repeatable checks; transparent assumptions.
+**Tool description**
+
+r120_checker — Automated verification of R 120 fire resistance (EN 1992-1-2, tabulated method) for concrete walls, columns, beams and slabs from an IFC model.
+
+What it does ?
+
+The tool reads a discipline IFC (model.ifc) and identifies scope elements: IfcWall/IfcWallStandardCase, IfcColumn, IfcBeam, IfcSlab. It will then extract the data like Geometry (thickness for walls/slabs via IfcMaterialLayerSet, width/height for beams/columns via section profile or bbox) or Material/Concrete class from associated materials (e.g., C30/37), with a declared default if missing.
+
+It will then apply the tabulated thresholds (based on requirements for R120): minimum dimensions, concrete class, and axis distance/cover.
+
+In the end, we want our model to be able to classify each element: PASS (meets thresholds), FAIL (below threshold), UNKNOWN (data gap).
+
+**Why this is valuable (business & societal)**
+This tool could help different aspects of a project :
+
+* Safety & compliance: Surfaces life-safety risks (insufficient thickness/cover/concrete class) early, before construction.
+
+* Time & cost: Reduces manual checks and redesign iterations by automating a repeatable, auditable verification.
+
+* Transparency: PASS/FAIL/UNKNOWN with explicit reasons and GlobalId traceability supports approvals and handovers.
+
+**last part question has to be made**
 
 ---
 
@@ -118,6 +135,8 @@ have to do it ourselves
 
 ## A2g — Software Licence
 
+
+**to change what software**
 * **MIT** (simple/permissive) or **Apache‑2.0** (permissive with explicit patent grant).
 * Recommended: **Apache‑2.0** for classroom collaboration and reuse.
 
