@@ -57,27 +57,10 @@ dont understand this question as to speak with manager to know
 
 <img width="2037" height="1046" alt="image" src="https://github.com/user-attachments/assets/07626271-907e-4036-bbf8-9f6144e144f0" />
 
-have to do it ourselves 
-
-**Example**
-* Swimlanes: **Architect**, **Structural Engineer**, **Fire Engineer**, **IFC R120 Checker (Python)**, **BIM Manager**.
-* Steps:
-
-  1. Architect/Structural export **IFC**
-  2. **Checker** ingests IFC → extracts element sets
-  3. Checker loads **rules** (R120 thresholds) + **assumptions** (µ_fi, exposure, cover)
-  4. Checker evaluates elements → **PASS / FAIL / UNKNOWN(data gap)**
-  5. Outputs **CSV** + **BCF** issues
-  6. Fire Engineer reviews fails/gaps; adjusts assumptions or design
-  7. Structural updates model; re‑export IFC
-  8. Iterate until **Pass**
-  9. BIM Manager publishes summary dashboard
-
-> See `A2/IMG/A2_usecase.bpmn` and `A2/IMG/A2_usecase_highlighted.bpmn` below (XML you can paste into **bpmn.io** and export as **SVG**).
-
 ---
 
 ## A2d — Scope the use case (where a new tool is needed)
+<img width="2029" height="1042" alt="image" src="https://github.com/user-attachments/assets/f305ea32-c755-4dc7-8cff-5fe0cb337fbb" />
 
 **New tool task:** **Evaluate R120 compliance** (Python/ifcOpenShell).
 
