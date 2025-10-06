@@ -55,8 +55,7 @@ Among all potential claims in the report this one was selected because:
 **Closest BIM use case:** 
 dont understand this question as to speak with manager to know
 
-**BPMN overview**
-
+<img width="2037" height="1046" alt="image" src="https://github.com/user-attachments/assets/07626271-907e-4036-bbf8-9f6144e144f0" />
 
 have to do it ourselves 
 
