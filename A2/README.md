@@ -1,7 +1,7 @@
 # A2: Use Case — Structural + Fire Safety (R 120, EN 1992‑1‑2)
 
 > Focus area: **Structural + Fire Safety**
-> Use case theme: **Automated check of R120 fire resistance (tabulated method)** for concrete walls in Advanced Building Design model #2508.
+> Use case theme: **Automated check of R120 fire resistance (tabulated method)** for load bearing concrete walls in Advanced Building Design model #2508.
 
 ---
 
@@ -10,7 +10,7 @@
 * **Members:** Diego Bruttin s251895 Jonas Alakuzay s170494
 * **Roles:** **Analyst** 
 * **Coding confidence (0–4 per person):** 3 and 1 → **Group total:** 4
-* Our group focus area is structural including fire safety. _ We are an analyst group.
+* Our group focus area is structural including fire safety. We are an analyst group.
 
 ---
 
@@ -18,10 +18,9 @@
 
 **Claim to check:**
 Do the Load‑bearing concrete walls comply with **R 120** per **EN 1992‑1‑2** dimensions and concrete strength class. 
-Found in D_Report_Team08_STR page 27-28 section 10 Structural Fire Safety
-We select building 2508 to focus on.
+Found in D_Report_Team08_STR page 27-28 section 10 Structural Fire Safety. We select building 2508 to focus on.
 
-This claim asserts that the concrete walls in the renovated Building 308 achieve R 120 fire resistance. According to EN 1992-1-2 (Eurocode 2, Part 1-2), a structure achieves R 120 if it can maintain its load-bearing capacity for 120 minutes under fire exposure. For the element to comply it requires specific minimums in cross-section dimensions and concrete strength class which is given in the euro code. If these thresholds are met, the element is considered compliant without further advanced calculation.
+This claim asserts that the concrete walls in the renovated Building 308 achieve R 120 fire resistance. According to EN 1992-1-2 (Eurocode 2, Part 1-2), a structure achieves R 120 if it can maintain its load-bearing capacity for 120 minutes under fire exposure. For the element to comply it requires specific minimums in thickness dimension and concrete strength class which is given in the euro code. If these thresholds are met, the element is considered compliant without further advanced calculation.
 
 **Justification**
 
@@ -29,7 +28,7 @@ Fire resistance is directly tied to occupant life safety, structural robustness,
 
 The criteria are explicit, checkable against model data (IFC geometry, materials, property sets) and can be automated in Python using ifcOpenShell.
 
-It is a perfect candidate for a digital compliance check — validating the claim ensures that modelled structural elements are not only geometrically valid but also code-compliant under fire.
+It is a perfect candidate for a digital compliance check, validating the claim ensures that modelled structural elements are not only geometrically valid but also code-compliant under fire.
 
 Among all potential claims in the report this one was selected because:  
 
