@@ -47,7 +47,7 @@ Among all potential claims in the report this one was selected because:
 * This claim would need to be checked at design phase at key gates (30/60/90%) and again before IFC issue. Finally, it is also needed for as‑built verification. So it will need to be chekced at the design and build phase.
 
 **Information relied on:**
-* From IFC: element class (IfcWall), wall thickness (from IfcMaterialLayerSet → LayerThickness), concrete material/class (if present), any FireRating string, and the attribute Pset_WallCommon.IsLoadBearing.
+* From IFC: element class (IfcWall), wall thickness (from IfcMaterialLayerSet → LayerThickness), concrete material/class.
  
 **BIM purpose:** 
 * Several BIM purposes are required. First, we need to gather the structural wall information in order to analyse it. Once it has been compared to the Eurocode requirements, our goal is to communicate whether the fire safety (R120) requirement is met or not.
