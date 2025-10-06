@@ -122,6 +122,23 @@ This tool could help different aspects of a project :
 | Thickness (walls)            | `IfcMaterialLayerSet` → `MaterialLayers[].LayerThickness` (sum) | Often     | Sum layers or fallback to solid geometry thickness        |
 | Concrete class (≥ C25/30)    | `IfcMaterial`/`Pset_ConcreteElementGeneral`/Name                | Sometimes | Parse; else default in `assumptions.yaml`                 |
 
+| Requirement | Where in IFC | In our models? | How we get it with ifcOpenShell | Notes / Fallbacks |
+|--------------|--------------|----------------|----------------------------------|--------------------|
+| **Units (mm vs m)** | `IfcProject.UnitsInContext` → `IfcSIUnit / IfcConversionBasedUnit` (Length) | Yes | Read once to build a **mm scale** factor | Needed to convert geometry to mm consistently. |
+| **Element type (walls, slabs)** | `IfcWall`, `IfcWallStandardCase`, `IfcSlab` | Yes | `model.by_type("IfcWall")`, etc. | Scope of the checker. |
+| **GlobalId / Name** | Entity attributes | Yes | `elem.GlobalId`, `elem.Name` | Used for traceability in CSV/BCF. |
+| **Storey containment** | `IfcRelContainedInSpatialStructure` → `IfcBuildingStorey` | Yes | `ifcopenshell.util.element.get_container(elem)` and walk up | For grouping and **vertical continuity** checks. |
+| **Storey elevation** | `IfcBuildingStorey.Elevation` | Often | Read elevation to **sort storeys** | Robust continuity (wall vs wall below). |
+| **Wall thickness** | `IfcRelAssociatesMaterial` → `IfcMaterialLayerSet(Usage)` → `MaterialLayers[].LayerThickness` (sum) | Often | Sum layer thicknesses; else **bbox** min dimension | Primary input for **R120** and LB heuristic. |
+| **Slab presence / footprint** | `IfcSlab` + plan extents | Yes | Use **bbox in XY** for overlap/near tests | Exact polygon needs `ifcopenshell.geom` (optional). |
+| **Material / Concrete detection** | `IfcRelAssociatesMaterial` → `IfcMaterial` or layer material `Name` | Often | Parse names for “concrete”, “beton”, or `Cxx/yy` pattern | Helps LB heuristic without trusting flags. |
+| **Explicit LoadBearing flag (for comparison only)** | `Pset_WallCommon.LoadBearing` (Boolean) or `Wall.LoadBearing` attribute | Sometimes | Iterate `IsDefinedBy` → `IfcRelDefinesByProperties` → find property | We **don’t trust** it; used only to compare against our inference. |
+| **Fire rating (declared)** | `Pset_WallCommon.FireRating` | Rare | Same property set scan | Not required for our R120 tabulated thickness check; we still report it if present. |
+| **Slab thickness (optional)** | Material layers on `IfcSlab` | Sometimes | Same as walls; sum layer thickness | Only needed if you later extend to load awareness. |
+| **Spatial 2D plan location (XY)** | From placement/geometry | Yes | Fast path: `elem.get_info()["BoundingBox"]` → plan rect | Accurate 2D footprints would use `ifcopenshell.geom` (slower). |
+| **Connections (optional)** | `IfcRelConnectsElements` | Rare | Iterate relations if present | Useful but not required for MVP. |
+
+
 **Learning needs:** robust ifcOpenShell queries, geometry thickness extraction.
 
 ---
