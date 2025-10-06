@@ -41,19 +41,16 @@ Among all potential claims in the report this one was selected because:
 ## A2c — Use Case (how/when/what)
 
 **How to check**
-* We can check the claim by verifying that all primary load-bearing concrete walls, columns, beams and slabs achieve R 120 per EN 1992-1-2 (tabulated method) by comparing IFC model data to tabulated minima (dimensions, concrete class, axis distance/cover).
-
+* We can check the claim by firstly verifying all load-bearing concrete walls and then see if those walls achieve R 120 per EN 1992-1-2 by comparing IFC model data to the Euro code requirments (wall thickness & concrete class)
+* 
 **When to check:**
-
 * This claim would need to be checked at design phase at key gates (30/60/90%) and again before IFC issue. Finally, it is also needed for as‑built verification. So it will need to be chekced at the design and build phase.
 
 **Information relied on:**
-
-* From IFC: element class, dimensions/thickness (profile or material layers), concrete material/class (if present), any `FireRating` string.
-* From team inputs: **µ_fi** by typology, **exposure sides** policy, **default concrete cover** per element type when rebar is not modeled.
+* From IFC: element class (IfcWall), wall thickness (from IfcMaterialLayerSet → LayerThickness), concrete material/class (if present), any FireRating string, and the attribute Pset_WallCommon.IsLoadBearing.
  
 **BIM purpose:** 
-* They are several BIM purposes required. First we will need to gather information in order ton analyse it. Once it has been compared to the standards, our goal will be to communicate the result in order to say if the fire safety requirements are met or not.
+* Several BIM purposes are required. First, we need to gather the structural wall information in order to analyse it. Once it has been compared to the Eurocode requirements, our goal is to communicate whether the fire safety (R120) requirement is met or not.
 
 **Closest BIM use case:** 
 dont understand this question as to speak with manager to know
