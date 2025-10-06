@@ -32,9 +32,9 @@ It is a perfect candidate for a digital compliance check, validating the claim e
 
 Among all potential claims in the report this one was selected because:  
 
-It directly addresses our group’s focus area (structural including fire safety).
+* It directly addresses our group’s focus area (structural including fire safety).
 
-It is measurable and testable: IFC files provide element types, dimensions, and materials that can be compared to the Eurocode requirements.
+* It is measurable and testable: IFC files provide element types, dimensions, and materials that can be compared to the Eurocode requirements.
 
 ---
 
