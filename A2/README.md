@@ -133,6 +133,10 @@ This tool could help different aspects of a project :
 | **Slab presence** | `IfcSlab` + plan extents | Yes | Use **bbox in XY** for overlap/near tests | Exact polygon needs `ifcopenshell.geom` (optional). |
 | **Material / Concrete detection** | `IfcRelAssociatesMaterial` → `IfcMaterial` or layer material `Name` | Often | Parse names for “concrete”, “beton”, or `Cxx/yy` pattern | Helps LB heuristic without trusting flags. |
 | **Explicit LoadBearing flag (for comparison only)** | `Pset_WallCommon.LoadBearing` (Boolean) or `Wall.LoadBearing` attribute | Sometimes | Iterate `IsDefinedBy` → `IfcRelDefinesByProperties` → find property | We **don’t trust** it; used only to compare against our inference. |
+
+
+
+
 **Learning needs:** robust ifcOpenShell queries, geometry thickness extraction.
 
 ---
