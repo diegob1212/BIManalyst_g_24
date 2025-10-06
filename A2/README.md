@@ -56,10 +56,13 @@ Among all potential claims in the report this one was selected because:
 The most relevant existing BIM use case is '08 Structural Analysis'.
 
 <img width="2037" height="1046" alt="image" src="https://github.com/user-attachments/assets/07626271-907e-4036-bbf8-9f6144e144f0" />
+
 ---
 
 ## A2d — Scope the use case (where a new tool is needed)
+
 <img width="2029" height="1042" alt="image" src="https://github.com/user-attachments/assets/f305ea32-c755-4dc7-8cff-5fe0cb337fbb" />
+
 ---
 
 ## A2e — Tool Idea (OpenBIM ifcOpenShell)
