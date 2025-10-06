@@ -56,16 +56,10 @@ Among all potential claims in the report this one was selected because:
 dont understand this question as to speak with manager to know
 
 <img width="2037" height="1046" alt="image" src="https://github.com/user-attachments/assets/07626271-907e-4036-bbf8-9f6144e144f0" />
-
 ---
 
 ## A2d — Scope the use case (where a new tool is needed)
 <img width="2029" height="1042" alt="image" src="https://github.com/user-attachments/assets/f305ea32-c755-4dc7-8cff-5fe0cb337fbb" />
-
-**New tool task:** **Evaluate R120 compliance** (Python/ifcOpenShell).
-
-* Reads IFC + YAML assumptions, applies tabulated thresholds, merges defaults where IFC lacks data, outputs CSV and BCF.
-
 ---
 
 ## A2e — Tool Idea (OpenBIM ifcOpenShell)
