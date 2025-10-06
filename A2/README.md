@@ -1,27 +1,27 @@
 # A2: Use Case — Structural + Fire Safety (R 120, EN 1992‑1‑2)
 
 > Focus area: **Structural + Fire Safety**
-> Use case theme: **Automated check of R120 fire resistance (tabulated method)** for concrete **walls, columns, beams, slabs** in selected Advanced Building Design models (#2501, #2506, #2508, #2516).
+> Use case theme: **Automated check of R120 fire resistance (tabulated method)** for concrete walls in Advanced Building Design model #2508.
 
 ---
 
 ## A2a — About our group
 
-* **Members:** Diego Bruttin s251895
+* **Members:** Diego Bruttin s251895 Jonas Alakuzay s170494
 * **Roles:** **Analyst** 
 * **Coding confidence (0–4 per person):** 3 and 1 → **Group total:** 4
-* Our group focus area is structural including fire safety. _ Is you focus area keeping the manager role_ what do we have to say there ??
+* Our group focus area is structural including fire safety. _ We are an analyst group.
 
 ---
 
 ## A2b — Identify Claim
 
 **Claim to check:**
-*All primary load‑bearing concrete **walls, columns, beams and slabs** comply with **R 120** per **EN 1992‑1‑2** using the **tabulated method** (dimensions, concrete class, axis distances/cover, exposure assumptions).* 
-Found in D_Report_Team08_STR page 27 section 10 Structural Fire Safety
+Do the Load‑bearing concrete walls comply with **R 120** per **EN 1992‑1‑2** dimensions and concrete strength class. 
+Found in D_Report_Team08_STR page 27-28 section 10 Structural Fire Safety
 We select building 2508 to focus on.
 
-This claim asserts that all primary structural concrete members (columns, beams, slabs, and walls) in the renovated Building 308 achieve R 120 fire resistance. According to EN 1992-1-2 (Eurocode 2, Part 1-2), a structure achieves R 120 if it can maintain its load-bearing capacity for 120 minutes under fire exposure. The “tabulated method” is a prescriptive compliance approach that requires specific minimums in cross-section dimensions, concrete strength class, and reinforcement cover (axis distance). If these thresholds are met, the element is considered compliant without further advanced calculation.
+This claim asserts that the concrete walls in the renovated Building 308 achieve R 120 fire resistance. According to EN 1992-1-2 (Eurocode 2, Part 1-2), a structure achieves R 120 if it can maintain its load-bearing capacity for 120 minutes under fire exposure. For the element to comply it requires specific minimums in cross-section dimensions and concrete strength class which is given in the euro code. If these thresholds are met, the element is considered compliant without further advanced calculation.
 
 **Justification**
 
@@ -35,7 +35,7 @@ Among all potential claims in the report this one was selected because:
 
 It directly addresses our group’s focus area (structural including fire safety).
 
-It is measurable and testable: IFC files provide element types, dimensions, and materials that can be compared to the Eurocode tabulated requirements.
+It is measurable and testable: IFC files provide element types, dimensions, and materials that can be compared to the Eurocode requirements.
 
 ---
 
