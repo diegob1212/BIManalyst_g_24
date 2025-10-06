@@ -122,13 +122,10 @@ This tool could help different aspects of a project :
 | Requirement                  | Where in IFC                                                    | Expected? | Handling                                                  |
 | ---------------------------- | --------------------------------------------------------------- | --------- | --------------------------------------------------------- |
 | Element type                 | `IfcWall*`, `IfcBeam`, `IfcColumn`, `IfcSlab`                   | Yes       | Query via ifcOpenShell type filters                       |
-| Thickness (walls/slabs)      | `IfcMaterialLayerSet` → `MaterialLayers[].LayerThickness` (sum) | Often     | Sum layers or fallback to solid geometry thickness        |
-| Section dims (beams/columns) | `IfcProfileDef` (e.g., `IfcRectangleProfileDef`) or BRep bbox   | Often     | Use profile; fallback to bbox with sanity checks          |
+| Thickness (walls)            | `IfcMaterialLayerSet` → `MaterialLayers[].LayerThickness` (sum) | Often     | Sum layers or fallback to solid geometry thickness        |
 | Concrete class (≥ C25/30)    | `IfcMaterial`/`Pset_ConcreteElementGeneral`/Name                | Sometimes | Parse; else default in `assumptions.yaml`                 |
-| Axis distance / cover        | Rebar entities (`IfcReinforcingBar`) or Psets                   | Rare      | Use defaults in assumptions; mark **UNKNOWN** if critical |
-| FireRating (declared)        | `Pset_*Common.FireRating`                                       | Sometimes | Compare “claimed” vs computed result                      |
 
-**Learning needs:** robust ifcOpenShell queries, geometry thickness extraction, BCF generation, YAML config, reproducible reporting.
+**Learning needs:** robust ifcOpenShell queries, geometry thickness extraction.
 
 ---
 
