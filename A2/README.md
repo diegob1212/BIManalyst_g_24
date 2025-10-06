@@ -121,8 +121,7 @@ This tool could help different aspects of a project :
 
 
 **to change what software**
-* **MIT** (simple/permissive) or **Apache‑2.0** (permissive with explicit patent grant).
-* Recommended: **Apache‑2.0** for classroom collaboration and reuse.
+* Blender, BPMN, Github, Anaconda & Python
 
 ---
 
