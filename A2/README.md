@@ -53,7 +53,7 @@ Among all potential claims in the report this one was selected because:
 * Several BIM purposes are required. First, we need to gather the structural wall information in order to analyse it. Once it has been compared to the Eurocode requirements, our goal is to communicate whether the fire safety (R120) requirement is met or not.
 
 **Closest BIM use case:** 
-dont understand this question as to speak with manager to know
+The most relevant existing BIM use case is '08 Structural Analysis'.
 
 <img width="2037" height="1046" alt="image" src="https://github.com/user-attachments/assets/07626271-907e-4036-bbf8-9f6144e144f0" />
 ---
