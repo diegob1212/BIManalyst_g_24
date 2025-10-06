@@ -89,7 +89,8 @@ This tool could help different aspects of a project :
 
 * Transparency: PASS/FAIL/UNKNOWN with explicit reasons and GlobalId traceability supports approvals and handovers.
 
-**last part question has to be made**
+**BMPN Diagram summarized**
+<img width="2028" height="1040" alt="image" src="https://github.com/user-attachments/assets/85f2e0a4-6c96-435d-9f79-30bcb18a7e27" />
 
 ---
 
