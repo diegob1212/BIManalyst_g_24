@@ -103,7 +103,7 @@ This tool could help different aspects of a project :
 | **Element type (walls)** | `IfcWall`, `IfcWallStandardCase` | Yes | `model.by_type("IfcWall")`, etc. | Scope of the checker. |
 | **GlobalId / Name** | Entity attributes | Yes | `elem.GlobalId`, `elem.Name` | Used for traceability. |
 | **Wall thickness** | `IfcRelAssociatesMaterial` → `IfcMaterialLayerSet(Usage)` → `MaterialLayers[].LayerThickness` (sum) | Often | Sum layer thicknesses; else **bbox** min dimension | Primary input for **R120**. |
-| **Material / Concrete detection** | `IfcRelAssociatesMaterial` → `IfcMaterial` or layer material `Name` | Often | Parse names for “concrete”, “beton”, or `Cxx/yy` pattern | Helps LB heuristic without trusting flags. |
+| **Material / Concrete detection** | `IfcRelAssociatesMaterial` → `IfcMaterial` or layer material `Name` | Often | Parse names for “concrete”, “beton”, or `Cxx/yy` pattern | None. |
 
 
 
