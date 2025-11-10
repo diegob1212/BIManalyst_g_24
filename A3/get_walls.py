@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-STATE THE CLAIM ?
+CLAIM : check R120 requirements. 220 mm of thickness and concrete class
 get_walls.py — Select walls that are both 'Interior Wall' and 'Load Bearing'
 
 """
@@ -36,4 +36,5 @@ def get_loadbearing_interior_walls(model):
 THis function can be develop in another project. This is a basic selsction who trusts the model who says which walls are load-beearing.
 Other functions can be implemented that checks if the walls are really load bearing or not. So it doesn't check the validity of the project
 but trut it
+
 """
