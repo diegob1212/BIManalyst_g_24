@@ -13,12 +13,12 @@ We found that this process could be automated for better consistency and faster 
 The developed Python script, r120_wall_checker, automates the verification of fire-resistance (R120) requirements for load-bearing interior concrete walls in IFC building models.
 It uses the IfcOpenShell library to parse and analyze Building Information Models (BIM) following the IFC standard.
 
-##Workflow Overview##
-1. IFC Model Import
+**Workflow Overview**
+#### 1. IFC Model Import
 
 The script reads both the architectural (25-08-D-ARCH.ifc) and structural (25-08-D-STR.ifc) models.
 
-2. Wall Selection
+#### 2. Wall Selection
 
 From all IfcWall and IfcWallStandardCase elements, the tool automatically selects:
 
@@ -28,7 +28,7 @@ Walls identified as interior (e.g. names containing “Interior Wall (Load Beari
 
 Note : The walls selection should be more advanced. In our case we trust what says the model but we should not. We cannot really trust the model. So to developp further our tool the idea would be to implemented some techniques and functions in order to check the validity of the model in terms of if the walls are really load bearing or not. This could be done in another project in order to implement it in ours.
 
-3. Material and Geometry Extraction
+#### 3. Material and Geometry Extraction
 
 For each selected wall, the tool extracts:
 
@@ -39,7 +39,7 @@ For each selected wall, the tool extracts:
 If no concrete layer is found, the wall is treated as non-concrete.
 If concrete is present but no class is specified, it is labeled “UNKNOWN concrete class.”
 
-4. Fire-Resistance Evaluation (R120)
+#### 4. Fire-Resistance Evaluation (R120)
 
 Each wall is checked against Eurocode 2 (EN 1992-1-2) tabulated requirements:
 
@@ -47,7 +47,7 @@ Minimum wall thickness → 220 mm
 
 Minimum concrete class → C25/30
 
-5. Automated Classification
+#### 5. Automated Classification
 
 Based on these parameters, the script assigns one of the different results:
 
