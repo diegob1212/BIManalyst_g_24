@@ -13,7 +13,7 @@ We found that this process could be automated for better consistency and faster 
 The developed Python script, r120_wall_checker, automates the verification of fire-resistance (R120) requirements for load-bearing interior concrete walls in IFC building models.
 It uses the IfcOpenShell library to parse and analyze Building Information Models (BIM) following the IFC standard.
 
-Workflow Overview
+##Workflow Overview##
 1. IFC Model Import
 
 The script reads both the architectural (25-08-D-ARCH.ifc) and structural (25-08-D-STR.ifc) models.
