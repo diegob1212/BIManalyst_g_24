@@ -10,28 +10,74 @@ This claim originates from D_Report_Team08_STR, pp. 27–28, Section 10 “Struc
 We found that this process could be automated for better consistency and faster validation during design.
 
 ## Description of the tool
-The developed Python script, called r120_wall_checker, automates the check of fire-resistance requirements for load-bearing concrete walls.
-Using ifcOpenShell, the tool reads the IFC model and performs the following steps:
+The developed Python script, r120_wall_checker, automates the verification of fire-resistance (R120) requirements for load-bearing interior concrete walls in IFC building models.
+It uses the IfcOpenShell library to parse and analyze Building Information Models (BIM) following the IFC standard.
 
-1. Extracts all IfcWall and IfcWallStandardCase elements.
+🔍 Workflow Overview
+1. IFC Model Import
 
-2. Filters only those marked as load-bearing (IsLoadBearing = TRUE).
+The script reads both the architectural (25-08-D-ARCH.ifc) and structural (25-08-D-STR.ifc) models.
 
-3. Reads wall thickness (from IfcMaterialLayerSet → LayerThickness) and concrete class (from IfcRelAssociatesMaterial → IfcMaterial.Name).
+2. Wall Selection
 
-4. Compares these values against Eurocode 2, EN 1992-1-2 tabulated criteria for R120.
+From all IfcWall and IfcWallStandardCase elements, the tool automatically selects:
 
-5. Classifies each wall as:
+Walls explicitly marked as load-bearing in the IFC attributes or names, and
 
-   - ✅ PASS – meets R120 thickness + material class,
+Walls identified as interior (e.g. names containing “Interior Wall (Load Bearing)”).
 
-   - ❌ FAIL – below threshold,
+3. Material and Geometry Extraction
 
-   - ⚠️ UNKNOWN – missing or incomplete data.
+For each selected wall, the tool extracts:
 
-The script exports results both to the terminal and a .csv file (r120_results.csv) for easy reference and documentation.
+The concrete thickness (only summing layers that contain concrete or béton), and
 
-Assumptions for wind calculation: (ARE WE DOING ANY ASSUMPTION OR SHOULD WE DELETE THIS=????????)
+The concrete strength class (e.g., C25/30) from the associated IFC materials.
+
+If no concrete layer is found, the wall is treated as non-concrete.
+If concrete is present but no class is specified, it is labeled “UNKNOWN concrete class.”
+
+4. Fire-Resistance Evaluation (R120)
+
+Each wall is checked against Eurocode 2 (EN 1992-1-2) tabulated requirements:
+
+Minimum wall thickness → 220 mm
+
+Minimum concrete class → C25/30
+
+5. Automated Classification
+
+Based on these parameters, the script assigns one of the following results:
+
+Result	Description
+✅ PASS	Thickness and concrete class both meet R120 criteria
+❌ FAIL	Does not meet one or more requirements
+⚠️ UNKNOWN	Concrete class not defined but thickness is satisfactory
+6. Output and Summary
+
+The tool prints a detailed wall-by-wall summary in the terminal, listing:
+
+Wall name
+
+Thickness (mm)
+
+Concrete class or “NOT CONCRETE”
+
+Compliance status (PASS / FAIL / UNKNOWN)
+
+Reason for classification
+
+At the end, it provides a summary table of:
+
+Total number of checked walls
+
+Number of passing walls
+
+Number of failing walls
+
+Number of walls with unknown results
+
+Assumptions for wind calculation: doesn't apply to our project
 
 Assumptions regarding the model (IFC-file): ???????????
 - The investigated model should contain a column and walls at every edge of the building, 
