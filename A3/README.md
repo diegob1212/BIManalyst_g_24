@@ -1,52 +1,39 @@
 # About the tool
 ## The problem that the tool solves
 
-In the early design stage of a building, the structural engineer's task is to 
-identify all the loads acting on a building. Especially wind load can be tedious 
-to determine and simplifications often lead to loads that are too conservative
-which in the end has an impact on the amount of material used to keep the 
-building stable. 
-
-Therefore, this tool should be an efficient way to determine wind load on a
-building.
+The tool verifies whether load-bearing concrete walls comply with the R120 fire-resistance requirement according to EN 1992-1-2.
+It checks if the wall elements meet the minimum thickness and concrete strength class needed to achieve 120 minutes of load-bearing capacity under fire exposure.
 
 
 ## The problem is found at...
-The problem is found at CES_BLD_24_06_STR p. 8 (pdf=12) and in the appendix
-p. 41 (pdf) where wind load is faulty determined! The group has used the values
-of the shape coefficents which is equivalent to 1m². For stability calculations,
-the values regarding an area of 10m² should be used.  
+This claim originates from D_Report_Team08_STR, pp. 27–28, Section 10 “Structural Fire Safety”, where the R120 fire-resistance check was performed manually.
+We found that this process could be automated for better consistency and faster validation during design.
 
 ## Description of the tool
-The tool determines wind load on a rectangular building based on an IFC-file.
+The developed Python script, called r120_wall_checker, automates the check of fire-resistance requirements for load-bearing concrete walls.
+Using ifcOpenShell, the tool reads the IFC model and performs the following steps:
 
-Firstly, the tool filters out basement levels and looks at the structure which is
-located above ground. From the remaining floors, a bounding box around the building
-is created. The dimensions of this box are then extracted as the width, length 
-, and height.
+1. Extracts all IfcWall and IfcWallStandardCase elements.
 
-By these three dimensions, the tool determines the peak velocity pressure, and
-the wind loads in zones A, B, C, D, and E.
+2. Filters only those marked as load-bearing (IsLoadBearing = TRUE).
 
-Lastly, these results are plotted as a wind load plan showcasing the different
-loads at the different zones.
+3. Reads wall thickness (from IfcMaterialLayerSet → LayerThickness) and concrete class (from IfcRelAssociatesMaterial → IfcMaterial.Name).
 
+4. Compares these values against Eurocode 2, EN 1992-1-2 tabulated criteria for R120.
 
-Assumptions for wind calculation:
-- The calculations are based on DS/EN 1991-1-4 incl. Danish National Annex.
-- The terrain is flat.
-- The orientation of the building is not taken into account, and wind action is
-  not reduced for any wind direction.
-- The building is located more than 25km from the west coast of Denmark.
-- The terrain category is III.
-- Building height should be at least 5m.
-- Surrounding structures are not taken into account.
-- Reduction by construction factor is not taken into account.
-- Reduction in terms of building height (different wind pressures at different 
-  heights) is not incorporated.
+5. Classifies each wall as:
 
+   - ✅ PASS – meets R120 thickness + material class,
 
-Assumptions regarding the model (IFC-file):
+   - ❌ FAIL – below threshold,
+
+   - ⚠️ UNKNOWN – missing or incomplete data.
+
+The script exports results both to the terminal and a .csv file (r120_results.csv) for easy reference and documentation.
+
+Assumptions for wind calculation: (ARE WE DOING ANY ASSUMPTION OR SHOULD WE DELETE THIS=????????)
+
+Assumptions regarding the model (IFC-file): ???????????
 - The investigated model should contain a column and walls at every edge of the building, 
   and at the top and bottom of the building. If this is not the case uncommenting some
   code in the function will take slabs and beams into account, however, 
@@ -70,67 +57,75 @@ OUTPUT: The function outputs the extracted outer dimensions of the building,
 ### Overview of the function
 
 
-![Picture1](https://github.com/FrederikJM/BIManalyst_g_28/blob/main/A3/BPMN.svg)<br>
+![Picture1](https://github.com/FrederikJM/BIManalyst_g_28/blob/main/A3/BPMN.svg)<br>  (change this to an updated - version of ours) 
 
 
 ## Instructions to run the tool
 To run the tool please follow the steps below:
-- Check that the model you want to investigate satisfies the criteria specified in
-  the IDS section of this markdown.
-- Open `main.py` and specify the location of the IFC-model as the model_path at line 33.
-- Run the script `main.py`.
-- Evaluate the text output in the console and the plots. 
-
+- Place your IFC file (e.g. model.ifc) in the same directory as the script.
+- Open the terminal and run: "python r120_wall_checker.py model.ifc"
+- The script will output wall IDs, names, and classification results (PASS/FAIL/UNKNOWN)
+- A summary report is generated as a CSV file in the same folder.
 
 # Advanced Building Design
 ## What Advanced Building Design Stage (A, B, C or D) would your tool be useful?
-This tool is to be used in the early design phases where a quick determination
-of the wind load on the building is needed, this would be in Design Stages 
-A, B, and C.
+The tool is primarily used during Stage B (Design) and Stage C (Validation) of the Advanced Building Design process,
+where model coordination and verification take place before issuing final IFCs.
 
 ## What subjects might use it?
-This tool is meant to be used by the structural subject.
+The subjects that might use it could be: 
+- Structural Engineering – to ensure fire resistance of load-bearing walls meets EN 1992-1-2.
+- Fire Safety Engineering – to confirm the required R120 fire performance level.
+- Digital BIM Coordination – to automate model verification and reduce manual checking time.
 
-## What information is required in the model for your tool to work?
+## What information is required in the model for your tool to work? (CHECK THIS=??????)
 Below are stated what criteria should be fulfilled to use the tool
 successfully.
-- The IFC-file should contain only the geometry of the investigated building.
-- The building should not have any cantilever parts.
-- The building should have the geometry of a box with vertical outer walls and
-  a flat roof.
-- The building envelope should not be tapered.
-- The IFC-file should have a wall or a column at every edge of the building's plan.
-- Basement stories that are located underground should have a name that contains
-  "-n", where n is an integer.
-- The stories that are located above ground should not have a name that contains
-  "-n", where n is an integer.
+- Element type: IfcWall, IfcWallStandardCase
+- Load-bearing property: IsLoadBearing = TRUE
+- Wall thickness: IfcMaterialLayerSet → LayerThickness
+- Material name / concrete class: IfcRelAssociatesMaterial → IfcMaterial.Name
+- Units and GlobalId for traceability (IfcProject.UnitsInContext, GlobalId)
+
+# IDS – Information Delivery Specification
+
+| Attribute                 | IFC Location                                  | Required | Example | Purpose                                 |
+| ------------------------- | --------------------------------------------- | -------- | ------- | --------------------------------------- |
+| Element type              | `IfcWall` / `IfcWallStandardCase`             | Yes      | –       | Defines scope                           |
+| Load-bearing flag         | `IsLoadBearing`                               | Yes      | TRUE    | Filters walls                           |
+| Wall thickness            | `IfcMaterialLayerSet → LayerThickness`        | Yes      | 200 mm  | Input for R120 check                    |
+| Material / concrete class | `IfcRelAssociatesMaterial → IfcMaterial.Name` | Yes      | C30/37  | Input for R120 check                    |
+| Units                     | `IfcProject.UnitsInContext`                   | Yes      | mm      | Ensures consistent thickness comparison |
 
 
-# Further work
-The following features would be a great addition to the tool:
-- Plotting the length of the zone in the wind load plans plot.
-- Displaying the determined correlation factor ρ in the plots.
-- Extracting the floor height of each floor and determining the 
-point load acting in each floor (this is used for determination 
-of the distribution of load to the stabilizing walls and the amount 
-of reinforcement in the floor diaphragm).
-- Determine the wind load on the roof.
-- Transferring the load directly to FEM software, or identifying 
-the location of the stabilizing walls and determining the distribution 
-of the loads acting on each wall.
+# 1. As is BPMN diagram
+<img width="2028" height="1040" alt="image" src="https://github.com/user-attachments/assets/85f2e0a4-6c96-435d-9f79-30bcb18a7e27" />
 
+# 2. Aim
+To automate the fire-resistance verification of load-bearing concrete walls (R120 per EN 1992-1-2) using IFC data, reducing manual effort and ensuring compliance early in the design stage.
 
- 
+# 3. To be BPMN diagram (UPDATE)
 
+# 4. Your tool
 
+The r120_wall_checker script is built in Python 3.12 using ifcOpenShell.
+It follows the defined A2 workflow but limits its scope to load-bearing concrete walls only.
+The script queries wall elements, retrieves thickness and concrete strength, and evaluates them
+against tabulated Eurocode values for R120 fire resistance.
 
+In this implementation, only walls are considered to focus on a single element type,
+making the check more consistent and easier to debug during testing
 
+# 5. Output
 
+The tool outputs:
+- A console summary showing number of PASS / FAIL / UNKNOWN walls.
+- A detailed CSV file r120_results.csv listing:
 
-
-
-
-
+  - Wall name / GlobalId
+  - Thickness (mm)
+  - Concrete class
+  - Check result (PASS / FAIL / UNKNOWN)
 
 
 
