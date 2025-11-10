@@ -9,6 +9,12 @@ It checks if the wall elements meet the minimum thickness and concrete strength 
 This claim originates from D_Report_Team08_STR, pp. 27–28, Section 10 “Structural Fire Safety”, where the R120 fire-resistance check was performed manually.
 We found that this process could be automated for better consistency and faster validation during design.
 
+Reference from report:
+<img width="919" height="424" alt="image" src="https://github.com/user-attachments/assets/c655f00a-d655-4194-8bfc-75a8fb1873d1" />
+
+Detailed reference from Eurocode: 
+<img width="932" height="846" alt="image" src="https://github.com/user-attachments/assets/3ef2b5c6-cb49-458a-9c7e-b10d097211a0" />
+
 ## Description of the tool
 The developed Python script, r120_wall_checker, automates the verification of fire-resistance (R120) requirements for load-bearing interior concrete walls in IFC building models. It is important to add that, based on the two pictures above, the thickness of the walls only applies for the concretepart so if there is other materials in the wall we will just remove them and take into account only the concrete part.
 It uses the IfcOpenShell library to parse and analyze Building Information Models (BIM) following the IFC standard.
