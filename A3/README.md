@@ -116,7 +116,7 @@ Optionally, the results can be exported to a CSV file for documentation and furt
 ### Overview of the function
 
 
-![Picture1](https://github.com/diegob1212/BIManalyst_g_24/blob/main/A3/Updated%20BPMN%20scope%20highlighted.svg)<br>  (change this to an updated - version of ours) 
+![Picture1](https://github.com/diegob1212/BIManalyst_g_24/blob/main/A3/Updated%20BPMN%20scope%20highlighted.svg)<br>
 
 
 ## Instructions to run the tool
