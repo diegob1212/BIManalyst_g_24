@@ -16,24 +16,24 @@ Detailed reference from Eurocode:
 <img width="932" height="846" alt="image" src="https://github.com/user-attachments/assets/3ef2b5c6-cb49-458a-9c7e-b10d097211a0" />
 
 ## Description of the tool
-The developed Python script, r120_wall_checker, automates the verification of fire-resistance (R120) requirements for load-bearing interior concrete walls in IFC building models. It is important to add that, based on the two pictures above, the thickness of the walls only applies for the concretepart so if there is other materials in the wall we will just remove them and take into account only the concrete part.
+The developed Python script, r120_wall_checker, automates the verification of fire-resistance (R120) requirements for load-bearing interior concrete walls in IFC building models. It is important to add that, based on the two pictures above, the thickness of the walls only applies for the concrete part so if there is other materials in the wall we will just remove them and take into account only the concrete thickness.
 It uses the IfcOpenShell library to parse and analyze Building Information Models (BIM) following the IFC standard.
 
 **Workflow Overview**
 
 **1. IFC Model Import**
 
-The script reads both the architectural (25-08-D-ARCH.ifc) and structural (25-08-D-STR.ifc) models.
+The script reads both the architectural (25-08-D-ARCH.ifc) and structural (25-08-D-STR.ifc) models. We don't really use the structural model but we load it in case load bearing walls are defined in this one and not in the architectural model.
 
 **2. Wall Selection**
 
 From all IfcWall and IfcWallStandardCase elements, the tool automatically selects:
 
-Walls explicitly marked as load-bearing in the IFC attributes or names, and
+- Walls explicitly marked as load-bearing in the IFC attributes or names, and
 
-Walls identified as interior (e.g. names containing “Interior Wall (Load Bearing)”).
+- Walls identified as interior (e.g. names containing “Interior Wall (Load Bearing)”).
 
-Note : The walls selection should be more advanced. In our case we trust what says the model but we should not. We cannot really trust the model. So to developp further our tool the idea would be to implemented some techniques and functions in order to check the validity of the model in terms of if the walls are really load bearing or not. This could be done in another project in order to implement it in ours.
+**Important Note** : The walls selection should be more advanced. In our case we trust what says the model but we should not. We cannot really trust the model. So to developp further our tool the idea would be to implemented some techniques and functions in order to check the validity of the model in terms of if the walls are really load bearing or not. This could be done in another project in order to implement it in ours.
 
 **3. Material and Geometry Extraction**
 
@@ -87,11 +87,12 @@ The tool prints a detailed wall-by-wall summary in the terminal, listing:
 
 - Number of walls with unknown results
 
-**Assumptions for wind calculation**: doesn't apply to our project
 
 **Assumptions regarding the model (IFC-file)**: 
 
-Our code assumes that the walls information is detailed. The model needs to find the information about load bearing and interior or not. If it is not specifiy the code will simply class the walls as unknowns. 
+Our code assumes that the walls information is detailed. The code needs to find the information about load bearing walls and interior or not. If it is not specifiy the code will simply class the walls as unknowns. 
+
+Also, as we couldn't implement the load bearing walls checker tool, we trust the veracity of the model in terms of list of loadbearing walls.
 
 
 **INPUT**: The function takes an IFC-file as the input.
@@ -125,9 +126,12 @@ Optionally, the results can be exported to a CSV file for documentation and furt
 
 ![Picture1](https://github.com/diegob1212/BIManalyst_g_24/blob/main/A3/Updated%20BPMN%20scope%20highlighted.svg)<br>
 
+There is a quick remminder of our tool. We can see that our tool could be improve by using an exterior tool that checks that load bearing walls really are what the model says. The step "Load bearing checker on the element" isn't performed by our code but is done by an exterior tool that could be implemented.
 
 ## Instructions to run the tool
 To run the tool please follow the steps below:
+0. Save both script python files in a direcory in your computer
+
 1. Prepare your IFC models
 Place both IFC files (the architectural and structural models) in the same directory as the script:
 - 25-08-D-ARCH.ifc  
@@ -141,11 +145,11 @@ python main.py
 3. View the results
 The script will:
 
-Automatically identify load-bearing interior walls from the IFC model
-Extract their thickness and concrete class
-Evaluate each wall’s compliance with R120 fire-resistance requirements (EN 1992-1-2)
+Automatically identify load-bearing interior walls from the IFC model and extract their thickness and concrete class.
+Automatically evaluate each wall’s compliance with R120 fire-resistance requirements (EN 1992-1-2)
 
 4. Check the output
+
 Results are printed directly in the terminal, including:
 - Wall name and ID
 - Measured thickness (mm)
@@ -153,6 +157,7 @@ Results are printed directly in the terminal, including:
 - Compliance status (PASS, FAIL, or UNKNOWN)
 - Explanation of the classification
 
+5. Optional : we can add csv file to have all the information
 # Advanced Building Design
 ## What Advanced Building Design Stage (A, B, C or D) would your tool be useful?
 The tool is primarily used during Stage B (Design) and Stage C (Validation) of the Advanced Building Design process,
@@ -168,52 +173,42 @@ The subjects that might use it could be:
 Below are stated what criteria should be fulfilled to use the tool
 successfully.
 - Element type: IfcWall, IfcWallStandardCase
-- Load-bearing property: IsLoadBearing = TRUE
+- Load-bearing property: Load Bearing or Not-Load Bearing
 - Wall thickness: IfcMaterialLayerSet → LayerThickness
-- Material name / concrete class: IfcRelAssociatesMaterial → IfcMaterial.Name
-- Units and GlobalId for traceability (IfcProject.UnitsInContext, GlobalId)
+- Material name / concrete class: IfcRelAssociatesMaterial → IfcMaterial.Name or in the wall named in the wall description
+
 
 # IDS – Information Delivery Specification
 
-| Attribute                 | IFC Location                                  | Required | Example | Purpose                                 |
-| ------------------------- | --------------------------------------------- | -------- | ------- | --------------------------------------- |
-| Element type              | `IfcWall` / `IfcWallStandardCase`             | Yes      | –       | Defines scope                           |
-| Load-bearing flag         | `IsLoadBearing`                               | Yes      | TRUE    | Filters walls                           |
-| Wall thickness            | `IfcMaterialLayerSet → LayerThickness`        | Yes      | 200 mm  | Input for R120 check                    |
-| Material / concrete class | `IfcRelAssociatesMaterial → IfcMaterial.Name` | Yes      | C30/37  | Input for R120 check                    |
-| Units                     | `IfcProject.UnitsInContext`                   | Yes      | mm      | Ensures consistent thickness comparison |
+To ensure that the R120 wall checker can run successfully, an Information Delivery Specification (IDS) has been produced.
+The IDS defines the minimum IFC data requirements that the model must fulfill for the tool to extract all necessary information about walls, materials, and fire-resistance properties.
+
+| Attribute                      | IFC Location                                         | Required | Example                            | Purpose                                                |
+| ------------------------------ | ---------------------------------------------------- | -------- | ---------------------------------- | ------------------------------------------------------ |
+| Element type                   | `IfcWall` / `IfcWallStandardCase`                    | ✅ Yes   | –                                  | Defines the scope of the elements to analyze           |
+| Load-bearing flag              | `Pset_WallCommon.LoadBearing`                        | ✅ Yes   | TRUE                               | Filters only load-bearing walls                        |
+| Interior wall identification   | `Name` or `ObjectType` attribute                     | ✅ Yes   | Basic Wall:Interior Wall (Load Bearing) | Ensures only interior walls are checked (exposed both sides) |
+| Material association            | `IfcRelAssociatesMaterial`                           | ✅ Yes   | –                                  | Required to access construction material layers        |
+| Wall thickness (concrete only) | `IfcMaterialLayerSet → IfcMaterialLayer.LayerThickness` | ✅ Yes   | 220 mm                             | Used for R120 minimum thickness verification           |
+| Material / concrete class      | `IfcMaterial.Name` or layer name                     | ⚠️ Optional | C25/30                            | Used for R120 concrete class check; if missing → UNKNOWN |
+| Units                          | `IfcProject.UnitsInContext`                          | ✅ Yes   | mm                                 | Ensures consistent unit conversion (e.g., mm vs m)     |
 
 
-# 1. As is BPMN diagram
-<img width="2028" height="1040" alt="image" src="https://github.com/user-attachments/assets/85f2e0a4-6c96-435d-9f79-30bcb18a7e27" />
 
-# 2. Aim
-To automate the fire-resistance verification of load-bearing concrete walls (R120 per EN 1992-1-2) using IFC data, reducing manual effort and ensuring compliance early in the design stage.
+A simplified version of the IDS file tailored to this project is:
 
-# 3. To be BPMN diagram (UPDATE)
-
-# 4. Your tool
-
-The r120_wall_checker script is built in Python 3.12 using ifcOpenShell.
-It follows the defined A2 workflow but limits its scope to load-bearing concrete walls only.
-The script queries wall elements, retrieves thickness and concrete strength, and evaluates them
-against tabulated Eurocode values for R120 fire resistance.
-
-In this implementation, only walls are considered to focus on a single element type,
-making the check more consistent and easier to debug during testing
-
-# 5. Output
-
-The tool outputs:
-- A console summary showing number of PASS / FAIL / UNKNOWN walls.
-- A detailed CSV file r120_results.csv listing:
-
-  - Wall name / GlobalId
-  - Thickness (mm)
-  - Concrete class
-  - Check result (PASS / FAIL / UNKNOWN)
-
-
+```xml
+<ids:InformationDeliverySpecification xmlns:ids="http://buildingSMART.org/ids">
+  <ids:Specification name="R120 Wall Check Input Requirements">
+    <ids:Entity name="IfcWallStandardCase">
+      <ids:Requirement property="Pset_WallCommon.LoadBearing" mustExist="true"/>
+      <ids:Requirement property="Name" pattern="Interior Wall"/>
+      <ids:Requirement property="IfcRelAssociatesMaterial" mustExist="true"/>
+      <ids:Requirement property="IfcMaterialLayer.LayerThickness" mustExist="true"/>
+      <ids:Requirement property="IfcMaterial.Name" pattern="(Concrete|Béton|C\d{2,3}/\d{2,3})"/>
+    </ids:Entity>
+  </ids:Specification>
+</ids:InformationDeliverySpecification>
 
 
 
