@@ -32,9 +32,9 @@ Note : The walls selection should be more advanced. In our case we trust what sa
 
 For each selected wall, the tool extracts:
 
-The concrete thickness (only summing layers that contain concrete or béton), and
+- The concrete thickness (it isn't the full thickness of the wall, it is only summing layers that contain concrete)
 
-The concrete strength class (e.g., C25/30) from the associated IFC materials.
+- The concrete strength class (e.g., C25/30) from the associated IFC materials.
 
 If no concrete layer is found, the wall is treated as non-concrete.
 If concrete is present but no class is specified, it is labeled “UNKNOWN concrete class.”
@@ -49,12 +49,13 @@ Minimum concrete class → C25/30
 
 5. Automated Classification
 
-Based on these parameters, the script assigns one of the following results:
+Based on these parameters, the script assigns one of the different results:
 
-Result	Description
-✅ PASS	Thickness and concrete class both meet R120 criteria
-❌ FAIL	Does not meet one or more requirements
-⚠️ UNKNOWN	Concrete class not defined but thickness is satisfactory
+- PASS	Thickness and concrete class both meet R120 criteria
+- FAIL	Does not meet one or more requirements
+- UNKNOWN	Concrete class not defined but thickness is satisfactory
+
+  
 6. Output and Summary
 
 The tool prints a detailed wall-by-wall summary in the terminal, listing:
@@ -81,27 +82,37 @@ Number of walls with unknown results
 
 Assumptions for wind calculation: doesn't apply to our project
 
-Assumptions regarding the model (IFC-file): ???????????
-- The investigated model should contain a column and walls at every edge of the building, 
-  and at the top and bottom of the building. If this is not the case uncommenting some
-  code in the function will take slabs and beams into account, however, 
-  this might increase the calculation time significantly!
-- The function filters out any elements related to a building story which
-  contains "-" followed by a number this, is done as these stories are 
-  assumed to be basement levels located underground and they are not
-  relevant in the determination of the pressure coefficients and the peak pressure of the wind load.
-- If basement levels are named differently please change this to use
-  the function.
+Assumptions regarding the model (IFC-file): 
 
-The function's name is wind_loading().
+Our code assumes that the walls information is detailed. The model needs to find the information about load bearing and interior or not. If it is not specifiy the code will simply class the walls as unknowns. 
+
 
 INPUT: The function takes an IFC-file as the input.
 
-OUTPUT: The function outputs the extracted outer dimensions of the building, 
-        reports the determined wind pressure in the different zones for
-        two wind directions and makes two plots illustrating the wind action
-        on the building. 
+OUTPUT: The script outputs a detailed fire-resistance compliance report for all load-bearing interior concrete walls found in the IFC model.
+Specifically, it provides:
 
+A terminal summary listing, for each wall:
+
+Wall name (e.g. Basic Wall:Interior Wall (Load Bearing))
+
+Wall thickness (mm)
+
+Concrete class (e.g. C25/30 or UNKNOWN concrete class)
+
+Compliance status: PASS, FAIL, or UNKNOWN
+
+Explanation of the result (e.g. "Insufficient thickness", "Concrete class not defined in IFC")
+
+A final summary table displaying:
+
+Number of walls meeting R120 criteria
+
+Number of walls failing the requirements
+
+Number of walls with incomplete data
+
+Optionally, the results can be exported to a CSV file for documentation and further analysis.
 ### Overview of the function
 
 
@@ -110,10 +121,30 @@ OUTPUT: The function outputs the extracted outer dimensions of the building,
 
 ## Instructions to run the tool
 To run the tool please follow the steps below:
-- Place your IFC file (e.g. model.ifc) in the same directory as the script.
-- Open the terminal and run: "python r120_wall_checker.py model.ifc"
-- The script will output wall IDs, names, and classification results (PASS/FAIL/UNKNOWN)
-- A summary report is generated as a CSV file in the same folder.
+1. Prepare your IFC models
+Place both IFC files (the architectural and structural models) in the same directory as the script:
+25-08-D-ARCH.ifc  
+25-08-D-STR.ifc
+
+2. Run the script
+Open a terminal in that directory and execute:
+
+python main.py
+
+3. View the results
+The script will:
+
+Automatically identify load-bearing interior walls from the IFC model
+Extract their thickness and concrete class
+Evaluate each wall’s compliance with R120 fire-resistance requirements (EN 1992-1-2)
+
+4. Check the output
+Results are printed directly in the terminal, including:
+- Wall name and ID
+- Measured thickness (mm)
+- Concrete class or “UNKNOWN concrete class”
+- Compliance status (PASS, FAIL, or UNKNOWN)
+- Explanation of the classification
 
 # Advanced Building Design
 ## What Advanced Building Design Stage (A, B, C or D) would your tool be useful?
