@@ -185,13 +185,13 @@ The IDS defines the minimum IFC data requirements that the model must fulfill fo
 
 | Attribute                      | IFC Location                                         | Required | Example                            | Purpose                                                |
 | ------------------------------ | ---------------------------------------------------- | -------- | ---------------------------------- | ------------------------------------------------------ |
-| Element type                   | `IfcWall` / `IfcWallStandardCase`                    | ✅ Yes   | –                                  | Defines the scope of the elements to analyze           |
-| Load-bearing flag              | `Pset_WallCommon.LoadBearing`                        | ✅ Yes   | TRUE                               | Filters only load-bearing walls                        |
-| Interior wall identification   | `Name` or `ObjectType` attribute                     | ✅ Yes   | Basic Wall:Interior Wall (Load Bearing) | Ensures only interior walls are checked (exposed both sides) |
-| Material association            | `IfcRelAssociatesMaterial`                           | ✅ Yes   | –                                  | Required to access construction material layers        |
-| Wall thickness (concrete only) | `IfcMaterialLayerSet → IfcMaterialLayer.LayerThickness` | ✅ Yes   | 220 mm                             | Used for R120 minimum thickness verification           |
-| Material / concrete class      | `IfcMaterial.Name` or layer name                     | ⚠️ Optional | C25/30                            | Used for R120 concrete class check; if missing → UNKNOWN |
-| Units                          | `IfcProject.UnitsInContext`                          | ✅ Yes   | mm                                 | Ensures consistent unit conversion (e.g., mm vs m)     |
+| Element type                   | `IfcWall` / `IfcWallStandardCase`                    |   Yes   | –                                  | Defines the scope of the elements to analyze           |
+| Load-bearing flag              | `Pset_WallCommon.LoadBearing`                        |   Yes   | TRUE                               | Filters only load-bearing walls                        |
+| Interior wall identification   | `Name` or `ObjectType` attribute                     |   Yes   | Basic Wall:Interior Wall (Load Bearing) | Ensures only interior walls are checked (exposed both sides) |
+| Material association            | `IfcRelAssociatesMaterial`                           |   Yes   | –                                  | Required to access construction material layers        |
+| Wall thickness (concrete only) | `IfcMaterialLayerSet → IfcMaterialLayer.LayerThickness` |   Yes   | 220 mm                             | Used for R120 minimum thickness verification           |
+| Material / concrete class      | `IfcMaterial.Name` or layer name                     |   Optional | C25/30                            | Used for R120 concrete class check; if missing → UNKNOWN |
+| Units                          | `IfcProject.UnitsInContext`                          |   Yes   | mm                                 | Ensures consistent unit conversion (e.g., mm vs m)     |
 
 
 
