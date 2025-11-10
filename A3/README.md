@@ -43,9 +43,9 @@ If concrete is present but no class is specified, it is labeled “UNKNOWN concr
 
 Each wall is checked against Eurocode 2 (EN 1992-1-2) tabulated requirements:
 
-Minimum wall thickness → 220 mm
+- Minimum wall thickness → 220 mm
 
-Minimum concrete class → C25/30
+- Minimum concrete class → C25/30
 
 **5. Automated Classification**
 
@@ -60,29 +60,29 @@ Based on these parameters, the script assigns one of the different results:
 
 The tool prints a detailed wall-by-wall summary in the terminal, listing:
 
-Wall name
+- Wall name
 
-Thickness (mm)
+- Thickness (mm)
 
-Concrete class or “NOT CONCRETE”
+- Concrete class or “NOT CONCRETE”
 
-Compliance status (PASS / FAIL / UNKNOWN)
+- Compliance status (PASS / FAIL / UNKNOWN)
 
-Reason for classification
+- Reason for classification
 
-At the end, it provides a summary table of:
+- At the end, it provides a summary table of:
 
-Total number of checked walls
+- Total number of checked walls
 
-Number of passing walls
+- Number of passing walls
 
-Number of failing walls
+- Number of failing walls
 
-Number of walls with unknown results
+- Number of walls with unknown results
 
-Assumptions for wind calculation: doesn't apply to our project
+**Assumptions for wind calculation**: doesn't apply to our project
 
-Assumptions regarding the model (IFC-file): 
+**Assumptions regarding the model (IFC-file)**: 
 
 Our code assumes that the walls information is detailed. The model needs to find the information about load bearing and interior or not. If it is not specifiy the code will simply class the walls as unknowns. 
 
@@ -92,25 +92,25 @@ Our code assumes that the walls information is detailed. The model needs to find
 **OUTPUT**: The script outputs a detailed fire-resistance compliance report for all load-bearing interior concrete walls found in the IFC model.
 Specifically, it provides:
 
-A terminal summary listing, for each wall:
+- A terminal summary listing, for each wall:
 
-Wall name (e.g. Basic Wall:Interior Wall (Load Bearing))
+- Wall name (e.g. Basic Wall:Interior Wall (Load Bearing))
 
-Wall thickness (mm)
+- Wall thickness (mm)
 
-Concrete class (e.g. C25/30 or UNKNOWN concrete class)
+- Concrete class (e.g. C25/30 or UNKNOWN concrete class)
 
-Compliance status: PASS, FAIL, or UNKNOWN
+- Compliance status: PASS, FAIL, or UNKNOWN
 
-Explanation of the result (e.g. "Insufficient thickness", "Concrete class not defined in IFC")
+- Explanation of the result (e.g. "Insufficient thickness", "Concrete class not defined in IFC")
 
 A final summary table displaying:
 
-Number of walls meeting R120 criteria
+- Number of walls meeting R120 criteria
 
-Number of walls failing the requirements
+- Number of walls failing the requirements
 
-Number of walls with incomplete data
+- Number of walls with incomplete data
 
 Optionally, the results can be exported to a CSV file for documentation and further analysis.
 ### Overview of the function
@@ -123,8 +123,8 @@ Optionally, the results can be exported to a CSV file for documentation and furt
 To run the tool please follow the steps below:
 1. Prepare your IFC models
 Place both IFC files (the architectural and structural models) in the same directory as the script:
-25-08-D-ARCH.ifc  
-25-08-D-STR.ifc
+- 25-08-D-ARCH.ifc  
+- 25-08-D-STR.ifc
 
 2. Run the script
 Open a terminal in that directory and execute:
