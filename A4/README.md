@@ -39,4 +39,9 @@ Before starting, make sure you have:
 - Installed the `ifcopenshell` package:  
   ```bash
   pip install ifcopenshell
-- 
+- IFC file in your working directory : 25-08-D-ARCH.ifc
+
+
+## How does the code run ?
+
+### Step 0 - Import packages
