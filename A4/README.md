@@ -5,7 +5,7 @@
 
 ##  Summary  
 
-**Short description (40 words):**  
+**Short description:**  
 This tutorial teaches how to use Python and the IfcOpenShell library to automatically verify fire-resistance (R120) compliance of load-bearing concrete walls from IFC models, according to Eurocode 2 (EN 1992-1-2).  
 
 **Learning Level:** Level 2 — *Analyst / BIM Data Automation*  
