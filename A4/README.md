@@ -1,1 +1,42 @@
+#  R120 Wall Checker – Automating Fire-Resistance Verification in IFC Models
+### *A BIM-based Python Tutorial using IfcOpenShell*
 
+---
+
+##  Summary  
+
+**Short description (40 words):**  
+This tutorial teaches how to use Python and the IfcOpenShell library to automatically verify fire-resistance (R120) compliance of load-bearing concrete walls from IFC models, according to Eurocode 2 (EN 1992-1-2).  
+
+**Learning Level:** Level 2 — *Analyst / BIM Data Automation*  
+**Focus Area:** BIM Use for Structural & Fire Safety Checking  
+
+---
+
+##  Learning Objectives  
+
+After completing this tutorial, you will be able to:  
+1. Understand how to **extract and filter IFC wall data** using IfcOpenShell.  
+2. Automatically **identify load-bearing interior walls** from IFC attributes.  
+3. Retrieve **concrete layer thickness and class** information from `IfcMaterialLayerSet`.  
+4. Apply **Eurocode 2 R120 fire-resistance criteria** in Python.  
+5. Interpret and document the **PASS / FAIL / UNKNOWN** results of a wall-by-wall check.  
+
+---
+
+##  Background & Motivation  
+
+Fire-resistance checking of walls in BIM models is typically manual and time-consuming.  
+By leveraging **IfcOpenShell**, we can automate this process and ensure consistent verification across models.  
+This tool responds to a learning need for *BIM analysts* to connect **model information (IFC)** with **regulatory performance requirements** (Eurocode 2).  
+
+---
+
+##  Prerequisites  
+
+Before starting, make sure you have:  
+- **Python ≥ 3.9**  
+- Installed the `ifcopenshell` package:  
+  ```bash
+  pip install ifcopenshell
+- 
