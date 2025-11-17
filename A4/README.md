@@ -26,9 +26,19 @@ After completing this tutorial, you will be able to:
 
 ##  Background & Motivation  
 
-Fire-resistance checking of walls in BIM models is typically manual and time-consuming.  
-By leveraging **IfcOpenShell**, we can automate this process and ensure consistent verification across models.  
-This tool responds to a learning need for *BIM analysts* to connect **model information (IFC)** with **regulatory performance requirements** (Eurocode 2).  
+Fire-resistance checking of load-bearing walls in BIM models is usually a manual and time-consuming task. Engineers often need to open the IFC model, locate each wall, check its thickness, find its material class, and compare these values to the Eurocode 2 (EN 1992-1-2) requirements for R120 fire resistance. Doing this repeatedly across different design iterations is inefficient and increases the chance of human error.
+
+By leveraging IfcOpenShell, we can automate these steps and ensure consistent and repeatable verification across all models.
+Instead of manually inspecting every wall, a script can extract the relevant information directly from the IFC structure and classify each wall as:
+
+PASS – meets R120 requirements
+
+FAIL – does not meet minimum thickness or concrete class
+
+UNKNOWN – missing or incomplete data
+
+This tutorial responds to a learning need for BIM analysts and structural/fire safety students who want to connect model information (IFC) with regulatory performance requirements.
+It also supports the broader goal of the course: enabling students to build small OpenBIM tools that help automate real engineering workflows.
 
 ---
 
