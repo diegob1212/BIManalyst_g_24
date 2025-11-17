@@ -180,7 +180,7 @@ def main():
     print("\n===  R120 Fire Resistance Results ===")
     for r in results:
         print(f"{r[0]:<35} | {r[1]:<8} | t={r[2]} mm | {r[3]} | {r[4]}")
-'''
+```
 
 This code automated the check of thickness and concrete class and give us as an output the list of walls with their properties and the result of the analysis.
 
