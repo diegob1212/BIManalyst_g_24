@@ -5,7 +5,7 @@
 
 ##  Summary  
 
-**Short description:**  
+**Short description :**  
 This tutorial teaches how to use Python and the IfcOpenShell library to automatically verify fire-resistance (R120) compliance of load-bearing concrete walls from IFC models, according to Eurocode 2 (EN 1992-1-2).  
 
 **Learning Level:** Level 2 — *Analyst / BIM Data Automation*  
@@ -66,7 +66,7 @@ Based on the report we find the requirements that have to be met. This can be ea
 
 ### Step 2 - Extract properties
 
-These two functions just extract the concrete class and the thickness of the concrete layer. For get_concrete_class if the class is not defined it returns "UNKNOWN" and if it is not concrete it returns None. For get_thickness, based on the list of load bearing walls, it will find the thickness of the concrete layer. It is tricky because lot of walls have different materials and for fire safecty requirements we only want the thickness of concrete.
+These two functions just extract the concrete class and the thickness of the concrete layer. For get_concrete_class if the class is not defined it returns "UNKNOWN" and if it is not concrete it returns None. For get_thickness, based on the list of load bearing walls, it will find the thickness of the concrete layer. It is tricky because lot of walls have different materials and for fire safety requirements we only want to select the thickness of concrete.
 
 ```bash
 def get_concrete_class(wall):
@@ -118,7 +118,7 @@ def get_wall_thickness(elem):
     return None
 ```
 
-Note : The function meets_concrete_requirement helps us to have all the information in the good format for the final function main. It already check the concrete class requirements and returns a bool. Based on this function we can know if the concrete class requirement is met or not. 
+Note : The function meets_concrete_requirement helps us to have all the information in the good format for the final function main. It already checks the concrete class requirements and returns a bool. Based on this function we can know if the concrete class requirement is met or not. 
 
 ```bash
 def meets_concrete_requirement(material_flag):
@@ -188,7 +188,8 @@ Basic Wall:Interior Wall (Load Bearing):505850 | UNKNOWN | t=240 mm | UNKNOWN co
 
 ## Conclusion
 
-This tutorial demonstrates how **openBIM** data can be programmatically analyzed to verify fire-resistance requirements at scale. It shows as easy it is to check really fast the fire safety requirements. This project can easily be modified ton increase the precision of the analysis. It adapts really good to other projects with only modifiying a few lines.
+This tutorial demonstrates how **openBIM** data can be programmatically analyzed to verify fire-resistance requirements at scale. It shows as easy it is to check really fast the fire safety requirements. This project can easily be modified to increase the precision of the analysis. It adapts really good to other projects with only modifiying a few lines.
+This project can also be used in different projects as checking slabs and columns for fire safety requirements. The main part will be the same just the selection of the IfcElements will be different.
 
 
 --- 
