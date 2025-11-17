@@ -54,7 +54,7 @@ from pathlib import Path
 from get_walls import get_loadbearing_interior_walls
 ```
 
-Our code works in two different python files. The first file is get_walls.py. From this one, we have to import the function get_loadbearing_interior_walls in order to select the walls analyse. We separate our tool in two part in order because the first function get_loadbearing_interior_walls can be improved without impacting the main project.
+Our code works in two different python files. The first file is get_walls.py. From this one, we have to import the function get_loadbearing_interior_walls in order to select the walls that we want to analyse. We separate our tool in two part because the first function get_loadbearing_interior_walls can be improved without impacting the main project.
 
 ### Step 1 - Fix the R120 requirements 
 
