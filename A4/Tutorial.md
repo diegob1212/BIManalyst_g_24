@@ -1,3 +1,3 @@
-### 🎬 Video Tutorial  
+### 🎬 R120 Wall Checker - Video Tutorial  
 Click the link to watch the tutorial:
 [Watch the video on Vimeo](https://vimeo.com/1141832589?share=copy&fl=sv&fe=ci)
