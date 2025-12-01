@@ -104,6 +104,7 @@ As an exchange student, the idea of my thesis is quite far now, but the course g
 Very likely. Over the next 10 years, automation and model-based validation will be standard in design offices. Knowing how to inspect and script IFC files gives a real advantage.
 
 **s170494**
+
 **Will I use OpenBIM tools in my thesis?**  
 Well possibly yes. I don’t yet know my thesis topic, but after this course I would say there is potential in using OpenBIM to automate checks, extract data, and speed up design analysis. I still feel a bit inexperienced to it, but the course gave me a good foundation and I can definitely see OpenBIM being relevant depending on the project.
 
