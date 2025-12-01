@@ -5,8 +5,6 @@
 
 ##  Summary  
 
-## Summary
-
 **Title:** Detecting Load-Bearing Walls and Fire Safety Compliance Using OpenBIM  
 **Category:** Structural / Fire Safety Verification  
 **Description:**  
