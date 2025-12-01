@@ -5,11 +5,12 @@
 
 ##  Summary  
 
-**Short description :**  
-This tutorial teaches how to use Python and the IfcOpenShell library to automatically verify fire-resistance (R120) compliance of load-bearing concrete walls from IFC models, according to Eurocode 2 (EN 1992-1-2).  
+## Summary
 
-**Learning Level:** Level 2 — *Analyst / BIM Data Automation*  
-**Focus Area:** BIM Use for Structural & Fire Safety Checking  
+**Title:** Detecting Load-Bearing Walls and Fire Safety Compliance Using OpenBIM  
+**Category:** Structural / Fire Safety Verification  
+**Description:**  
+A Python-based OpenBIM tool that automatically identifies load-bearing walls from IFC models without relying on the `LoadBearing` flag. It compares architectural and structural data, infers real load-bearing elements, and checks if they satisfy R120 fire-resistance requirements according to EN 1992-1-2.
 
 ---
 
