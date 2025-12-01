@@ -62,6 +62,8 @@ The process required:
 
 This development forced us to combine **structural reasoning** with **data reasoning** — deciding what counts as a “load-bearing wall” when data is incomplete, and implementing a scoring heuristic.  
 
+In the begining of the course, we asked ourselves a lot of questions about openBIM. In the end I think we answered most of them and learn a lot about OpenBIM. Still, there is some aspects with unknowns that we would want to develop and answer in the future.
+
 ---
 
 ## 6. Reflection on the Course Design
@@ -69,7 +71,7 @@ This development forced us to combine **structural reasoning** with **data reaso
 - **Choice of use case:** The freedom to select our focus area (fire & structure) made the learning more personal. Although it added complexity, it encouraged autonomy and creativity.  
   → Would we prefer less choice? Probably not — the open format helped us explore genuine interests.
 
-- **Number of tools:** The balance was good. BPMN.io, Markdown, GitHub, and Python (ifcopenshell) were sufficient. Adding more tools might have distracted from the main goal — understanding the **information logic** of BIM.
+- **Number of tools:** The balance was good. BPMN.io, Markdown, GitHub, and Python (ifcopenshell) were sufficient. Adding more tools might have distracted from the main goal — understanding the **information logic** of BIM. Although, it coul be good in the future to add for each focus area some specific tools that will help us even more.
 
 - **Process & outcomes:** Each assignment (A1–A4) built logically on the previous one, and A3–A4 gave us the confidence to build a functional prototype tool.
 
@@ -80,10 +82,10 @@ This development forced us to combine **structural reasoning** with **data reaso
 ## 7. Feedback Summary (as a Group)
 
 Our peers appreciated that our tool addressed a **concrete and safety-critical use case**.  
-Feedback highlights:
-- The **logic for detecting load-bearing walls** without relying on the `LoadBearing` flag was considered innovative and realistic.  
+Feedback highlights:  
 - Some feedback suggested visualizing the results directly in 3D (e.g., color-coded walls), which could be a good future extension.  
-- The **R120 verification logic** was clear and linked to Eurocode standards — a strong point.  
+- The **R120 verification logic** was clear and linked to Eurocode standards
+- They suggested also to extend the process of verification to others elements, that could be done in the future  
 
 ### What stage does our tool work in Advanced Building Design?
 Our tool supports **Stage B–C** (Design & Analysis):
@@ -93,9 +95,10 @@ Our tool supports **Stage B–C** (Design & Analysis):
 ---
 
 ## 8. Individual Future Outlook
+**s251895**
 
 **Will I use OpenBIM tools in my thesis?**  
-Yes — the course gave me enough confidence to apply OpenBIM workflows to a structural or sustainability topic.  
+As an exchange student, the idea of my thesis is quite far now, but the course gave me enough confidence to apply OpenBIM workflows to a structural or sustainability topic. There will be for sure concepts of OpenBIM that I will use in my thesis in some years.
 
 **Will I use OpenBIM tools in professional life?**  
 Very likely. Over the next 10 years, automation and model-based validation will be standard in design offices. Knowing how to inspect and script IFC files gives a real advantage.
