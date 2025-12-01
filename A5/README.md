@@ -114,16 +114,10 @@ I mean you never know what the future brings but the industry is moving toward o
 ---
 
 ## 9. Wrap-Up — Journey from A1 → A5
+**s251895**
 
-- **A1 (Explore):** Defined our general focus on structural & fire safety in buildings.  
-- **A2 (Use Case):** Designed the process in BPMN and identified the claim to check (“Walls satisfy R120 fire resistance”).  
-- **A3 (Tool):** Implemented the first Python prototype using ifcopenshell.  
-- **A4 (Teach):** Documented the method as a tutorial for others.  
-- **A5 (Reflect):** Looked back at what we learned, built, and understood about OpenBIM as a method.
+I really enjoy my journey through this course. I began the semester really lost because it was the first time for me working on BIM, so quite an exciting challenge ! This course don't go too fast you have plenty of time to understand what you are talking about. A1 and A2 are really helpful to understand the basics of OpenBIM and develop ideas for the rest of the project. It was a totally new way to approach and analyse a model and I really like it. I feel that some weeks we were a little to free to work on our own. It could be good to me a little bit more guided sometimes towards the right direction. Once in A3 and once I understood the basic concepts, the course was quite easier for me. I really liked coding in Python base on my past experiences. I think maybe that Python takes too much place in this course and we lost the focus of OpenBIM and just focus on coding. Finally in A4-A5, it was nice to create the tutorial. It gives us another point of view of the project. We leave a little bit the role of BIM analyst to focus on how other people will approach our project. We could have develop our project even more, but some lack of knowledge in some areas really complicated our work. So we learn a lot through this journey. Our perspective shifted from BIM just as a 3D geometry, but use BIM to prove performance and compliance.
 
-> Through A1–A5, our perspective shifted:  
-> From **“BIM as 3D geometry”** → to **“BIM as structured, verifiable information.”**  
-> We learned to use OpenBIM not only to visualize design but to **prove performance and compliance.**
 
 **s170494**
 
