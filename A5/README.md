@@ -125,6 +125,11 @@ I mean you never know what the future brings but the industry is moving toward o
 > From **“BIM as 3D geometry”** → to **“BIM as structured, verifiable information.”**  
 > We learned to use OpenBIM not only to visualize design but to **prove performance and compliance.**
 
+**s170494**
+I would say my journey through A1–A5 was challenging but very rewarding as well. I believe A1 and A2 gave me the basic understanding of IFC data and helped build the foundation for working with ifcopenshell. In A3 and A4 the learning curve became much steeper, especially when extracting properties, analysing model inconsistencies, and turning the workflow into a working Python script and tutorial. We had to rethink and adjust the method several times, which showed how complex even small OpenBIM tools can be.
+
+So overall i think the assignments connected well and each step prepared us for the next. Looking back at it now, the entire process made sense, and with more time I believe our script could be improved even further and made more robust.
+
 ---
 
 *End of Reflection – Group Fire & Structure*
