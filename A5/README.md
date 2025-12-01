@@ -109,7 +109,7 @@ Very likely. Over the next 10 years, automation and model-based validation will 
 Well possibly yes. I don’t yet know my thesis topic, but after this course I would say there is potential in using OpenBIM to automate checks, extract data, and speed up design analysis. I still feel a bit inexperienced to it, but the course gave me a good foundation and I can definitely see OpenBIM being relevant depending on the project.
 
 **Will I use OpenBIM tools in professional life?**  
-I mean you never know what the future brings but the industry is moving toward open stards and automated workflows, so having some skills in OpenBim will only be valuable. Even if i wont be using scripting every day, but understanding how IFC data can be accessed and reused is pretty good advantage and i think it might become part of my work within the next 10 years.
+I mean you never know what the future brings but the industry is moving toward open standards and automated workflows, so having some skills in OpenBim will only be valuable. Even if i wont be using scripting every day, but understanding how IFC data can be accessed and reused is pretty good advantage and i think it might become part of my work within the next 10 years.
 
 ---
 
