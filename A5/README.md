@@ -45,7 +45,7 @@ By implementing a real OpenBIM script, we understood the link between **BIM info
 
 ## 4. How I Might Use OpenBIM in the Future
 
-In the future, I see OpenBIM as a **core framework** for integrating analysis and design verification across disciplines:
+In the future, We see OpenBIM as a **core framework** for integrating analysis and design verification across disciplines:
 - **Academic use (thesis):** Applying OpenBIM to validate sustainability, structural safety, or LCA metrics automatically.  
 - **Professional practice:** Developing or adapting scripts to check compliance for fire resistance, accessibility, or energy performance before model submission.  
 - **Collaborative work:** Using shared IFC models to bridge gaps between architects, engineers, and fire safety specialists through transparent data exchange.
