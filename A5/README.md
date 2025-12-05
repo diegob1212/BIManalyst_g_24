@@ -3,7 +3,7 @@
 ## Group Focus Area
 **Focus:** Structural + Fire Safety  
 **Use Case:** Verification of Load-Bearing Walls and Fire Resistance (R120) using IFC models  
-**Team Members:** [Add your names here]  
+**Team Members:** [Diego & Jonas]  
 
 ---
 
